@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:RetainElement"
+             mc:Ignorable="d"
+             x:Class="RetainElement.MainPage">
+
+    <ContentPage.BindingContext>
+        <local:MainViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <ListView x:Name="RetainElementListView"
+                  ItemsSource="{Binding Items}"
+                  ItemTapped="RetainElementListView_ItemTapped"
+                  SelectionMode="None"
+                  SeparatorVisibility="None"
+                  HasUnevenRows="True"
+                  CachingStrategy="RetainElement"
+                  BackgroundColor="Transparent">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Frame Margin="10,5,10,5" CornerRadius="5" BackgroundColor="PaleVioletRed">
+                            <StackLayout>
+                                <Label Text="{Binding Header}" FontAttributes="Bold" FontSize="Large" />
+                                <Label Text="{Binding Body}" FontAttributes="None" FontSize="Medium" />
+                                <Label Text="{Binding Footer}" FontAttributes="Italic" FontSize="Small" />
+                            </StackLayout>
+                        </Frame>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+
+</ContentPage>
